@@ -19,23 +19,21 @@ permissions:
 
 jobs:
   build:
-    runs-on: windows-latest
-    strategy:
-      matrix:
-        r-version: ['3.6.3']
+    runs-on: windows-latest  # Specify the OS here
 
     steps:
       - uses: actions/checkout@v4
-      - name: Set up R ${{ matrix.r-version }}
-        uses: r-lib/actions/setup-r@v2  # Replace 'v2' with the latest stable version if available
+      - name: Set up R 3.6.3
+        uses: r-lib/actions/setup-r@v2
         with:
-          r-version: ${{ matrix.r-version }}
+          r-version: '3.6.3'
       - name: Install dependencies
         run: |
           install.packages(c("remotes", "rcmdcheck"))
           remotes::install_deps(dependencies = TRUE)
         shell: Rscript {0}
       - name: Check
-        run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
+        run: |
+          rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error", path = "C:/Users/Surface Go/OneDrive/Apps/PythonProjects")
         shell: Rscript {0}
 
