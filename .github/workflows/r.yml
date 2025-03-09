@@ -34,6 +34,6 @@ jobs:
         shell: Rscript {0}
       - name: Check
         run: |
-          rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error", path = "C:/Users/Surface Go/OneDrive/Apps/PythonProjects")
+          rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
         shell: Rscript {0}
 
